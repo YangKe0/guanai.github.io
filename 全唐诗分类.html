@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+      title: {
+        text: '《全唐诗》中的关隘诗',
+        subtext: '数据来源————李芮. 《全唐诗》中的河陇长城诗和关隘诗研究[D].西北民族大学,2019.DOI:10.27408/d.cnki.gxmzc.2019.000068.',
+        textStyle: {
+          fontFamily: '楷体',
+          fontSize: 24,
+          color: '#000',
+          fontStyle: 'italic'
+        },
+        subtextStyle: {
+          fontFamily: '楷体',
+          fontSize: 14,
+          color: '#666'
+        },
+        padding: 10,
+        borderColor: '#999',
+        borderWidth: 1,
+        backgroundColor: '#f9f9f9'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        },
+        formatter: function (params) {
+          var tar = params[1];
+          return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+        }
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      xAxis: {
+        type: 'category',
+        splitLine: { show: false },
+        data: ['长城诗', '玉门关诗', '萧关诗', '阳关诗', '峡口关'],
+        axisLine: {
+          lineStyle: {
+            color: '#999',
+            width: 1
+          }
+        },
+        axisLabel: {
+          fontFamily: '楷体',
+          fontSize: 14,
+          color: '#666'
+        }
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: {
+          lineStyle: {
+            color: '#999',
+            width: 1
+          }
+        },
+        axisLabel: {
+          fontFamily: '楷体',
+          fontSize: 14,
+          color: '#666'
+        }
+      },
+      series: [
+        {
+          name: 'Placeholder',
+          type: 'bar',
+          stack: 'Total',
+          itemStyle: {
+            borderColor: 'transparent',
+            color: 'transparent'
+          },
+          emphasis: {
+            itemStyle: {
+              borderColor: 'transparent',
+              color: 'transparent'
+            }
+          },
+          data: [0, 20, 18, 16, 29]
+        },
+        {
+          name: '数量',
+          type: 'bar',
+          stack: 'Total',
+          label: {
+            show: true,
+            position: 'inside',
+            fontFamily: '楷体',
+            fontSize: 14,
+            color: '#666'
+          },
+          itemStyle: {
+            color: '#c23531',
+            barBorderRadius: 5
+          },
+          data: [54, 26, 29, 32, 2]
+        }
+      ]
+    };
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
