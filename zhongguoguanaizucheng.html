@@ -5,6 +5,12 @@
 <html lang="zh-CN" style="height: 100%">
 <head>
   <meta charset="utf-8">
+  <style>
+    body {
+      background-color: #FDF5E6; /* 设置背景颜色为古色古香的米黄色 */
+      font-family: '宋体', 'SimSun', 'KaiTi', '楷体'; /* 设置字体为古风字体 */
+    }
+  </style>
 </head>
 <body style="height: 100%; margin: 0">
   <div id="container" style="height: 100%"></div>
@@ -38,46 +44,85 @@
     var app = {};
     var option;
 
-option = {
-  title: {
-    text: '中国关隘组成',
-    subtext: '数据来源---',
-    left: 'center'
-  },
-  tooltip: {
-    trigger: 'item',
-    formatter: '{a} <br/>{b} : {c} ({d}%)'
-  },
-  legend: {
-    bottom: 10,
-    left: 'center',
-    data: ['十三隘', '福建关隘', '蜀道关隘', '中原关隘', '长城关隘','八关九隘']
-  },
-  series: [
-    {
-      type: 'pie',
-      radius: '65%',
-      center: ['50%', '50%'],
-      selectedMode: 'single',
-      data: [
-        {
-          value: 1548,name: '长城关隘' },
-        { value: 735, name: '中原关隘' },
-        { value: 510, name: '蜀道关隘' },
-        { value: 434, name: '福建关隘' },
-        { value: 434, name: '八关九隘' },
-        { value: 335, name: '十三隘' }
-      ],
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10,
-          shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+    option = {
+      title: {
+        text: '中国关隘组成',
+        subtext: '数据来源————百度百科',
+        left: 'center',
+        textStyle: {
+          fontFamily: '宋体', // 设置标题字体为古风字体
+          fontSize: 24, // 设置标题字号
+          color: '#8B4513' // 设置标题颜色为古褐色
         }
-      }
-    }
-  ]
-};
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b} : {c} ({d}%)'
+      },
+      legend: {
+        bottom: 10,
+        left: 'center',
+        textStyle: {
+          fontFamily: '宋体', // 设置图例字体为古风字体
+          fontSize: 16, // 设置图例字号
+          color: '#8B4513' // 设置图例颜色为古褐色
+        },
+        data: ['十三隘', '福建关隘', '蜀道关隘', '中原关隘', '长城关隘', '八关九隘']
+      },
+      series: [
+        {
+          type: 'pie',
+          radius: '65%',
+          center: ['50%', '50%'],
+          selectedMode: 'single',
+          data: [
+            {
+              value: 101, name: '长城关隘',
+              itemStyle: {
+                color: '#CD853F' // 设置饼图颜色为古铜色
+              }
+            },
+            {
+              value: 29, name: '中原关隘',
+              itemStyle: {
+                color: '#000080' // 设置饼图颜色为古蓝色
+              }
+            },
+            {
+              value: 3, name: '蜀道关隘',
+              itemStyle: {
+                color: '#008000' // 设置饼图颜色为古绿色
+              }
+            },
+            {
+              value: 18, name: '福建关隘',
+              itemStyle: {
+                color: '#8B4513' // 设置饼图颜色为古褐色
+              }
+            },
+            {
+              value: 17, name: '八关九隘',
+              itemStyle: {
+                color: '#FAEBD7' // 设置饼图颜色为古褐色
+              }
+            },
+            {
+              value: 13, name: '十三隘',
+              itemStyle: {
+                color: '#800080' // 设置饼图颜色为古褐色
+              }
+            }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    };
 
     if (option && typeof option === 'object') {
       myChart.setOption(option);
